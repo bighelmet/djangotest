@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>edit page</title>
+</head>
+<body>
+<form action="{%url 'blog:edit_action' %}" method="post">
+    {%csrf_token%}
+    {%if article %}
+        <input tpye="hidden" name="article_id" value="{{article.id}}"/>
+        <lable>标题
+            <input type="text" name="title" value="{{article.title}}"/>
+        </lable>
+        <br/>
+        <lable>内容
+            <input type="text" name="content" value="{{article.content}}"/>
+        </lable>
+        <br/>
+    {% else %}
+        <input tpye="hidden" name="artile_id" value="0"/>
+        <lable>标题
+            <input type="text" name="title"/>
+        </lable>
+        <br/>
+        <lable>内容
+            <input type="text" name="content"/>
+        </lable>
+        <br/>
+    {% endif %}
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
